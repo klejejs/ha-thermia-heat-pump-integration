@@ -6,7 +6,7 @@
   "dependencies": [],
   "after_dependencies": [],
   "codeowners": ["@klejejs"],
-  "requirements": ["ThermiaOnlineAPI===1.6"],
+  "requirements": ["ThermiaOnlineAPI===1.7"],
   "version": "1.0",
   "iot_class": "cloud_polling"
 }
