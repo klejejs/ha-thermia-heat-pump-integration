@@ -1,0 +1,1 @@
+"""Thermia water heater component."""

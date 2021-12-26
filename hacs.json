@@ -1,0 +1,5 @@
+{
+  "name": "Thermia Heat Pump",
+  "render_readme": true,
+  "domains": ["water_heater"]
+}
