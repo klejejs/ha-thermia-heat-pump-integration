@@ -1,7 +1,7 @@
 # Thermia Heat Pump Integration
 
-[![GitHub Release](https://img.shields.io/github/release/custom-components/blueprint.svg?style=for-the-badge)](https://github.com/klejejs/ha-thermia-heat-pump-integration/releases)
-[![GitHub Activity](https://img.shields.io/github/commit-activity/y/custom-components/blueprint.svg?style=for-the-badge)](https://github.com/klejejs/ha-thermia-heat-pump-integration/commits/main)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/klejejs/ha-thermia-heat-pump-integration?style=for-the-badge)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/klejejs/ha-thermia-heat-pump-integration?style=for-the-badge)
 [![License](https://img.shields.io/github/license/custom-components/blueprint.svg?style=for-the-badge)](LICENSE)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
