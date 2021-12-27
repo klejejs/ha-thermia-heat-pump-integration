@@ -47,4 +47,6 @@ custom_components/thermia_water_heater/manifest.json
 custom_components/thermia_water_heater/water_heater.py
 ```
 
+---
+
 ## Contributions are welcome!
