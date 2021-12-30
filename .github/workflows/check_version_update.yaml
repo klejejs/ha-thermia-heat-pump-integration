@@ -1,6 +1,8 @@
 name: Check version updates for integration
 
 on:
+  workflow_dispatch:
+  push:
   schedule:
     - cron: "* * * * *"
 
