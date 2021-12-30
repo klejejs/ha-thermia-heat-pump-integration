@@ -32,9 +32,10 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TOKEN_FOR_GITHUB_ACCESS }}
           commit-message: Update ThermiaOnlineAPI version
           title: Update ThermiaOnlineAPI version
           body: |
             This PR updates the ThermiaOnlineAPI version to the latest version.
           branch: update-dependencies
+          delete-branch: true
