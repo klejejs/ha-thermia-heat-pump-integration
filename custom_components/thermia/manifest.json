@@ -5,8 +5,12 @@
   "issue_tracker": "https://github.com/klejejs/ha-thermia-heat-pump-integration/issues",
   "dependencies": [],
   "after_dependencies": [],
-  "codeowners": ["@klejejs"],
-  "requirements": ["ThermiaOnlineAPI==1.9"],
+  "codeowners": [
+    "@klejejs"
+  ],
+  "requirements": [
+    "ThermiaOnlineAPI==1.9"
+  ],
   "version": "1.0",
   "iot_class": "cloud_polling"
 }
