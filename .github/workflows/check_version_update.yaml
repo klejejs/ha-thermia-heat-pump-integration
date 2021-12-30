@@ -23,8 +23,8 @@ jobs:
           pip install -U lastversion
       - name: Install jq
         run: |
-          apt update
-          apt install -y jq
+          sudo apt update
+          sudo apt install -y jq
       - name: Check for updates
         run: ./scripts/update_ThermiaOnlineAPI_version.sh
       - name: Create Pull Request
