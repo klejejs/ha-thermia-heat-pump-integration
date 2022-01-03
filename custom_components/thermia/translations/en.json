@@ -1,0 +1,17 @@
+{
+  "title": "Thermia Heat Pump",
+  "config": {
+    "step": {
+      "user": {
+        "description": "Set up Thermia Heat Pump integration",
+        "data": {
+          "username": "Thermia Username",
+          "password": "Thermia Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_credentials": "Credentials are invalid."
+    }
+  }
+}

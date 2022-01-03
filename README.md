@@ -14,17 +14,15 @@ _Component to integrate with [Thermia Heat Pump](https://github.com/klejejs/ha-t
 Platform | Description
 -- | --
 `water_heater` | Thermia Heat Pump integration
+`sensor` | Thermia Outside Temperature sensor
+
+## Confirmed heat pumps that API supports:
+* Thermia Diplomat / Diplomat Duo
+* Thermia iTec
 
 ## Setup
 
-To set up Thermia Heat Pump Integration, you need to add the following to your `configuration.yaml` file:
-
-```yaml
-water_heater:
-  - platform: thermia
-    username: "your_thermia_username"
-    password: "your_thermia_password"
-```
+To set up Thermia Heat Pump Integration, go to Settings -> Integrations -> Add Integration and search for Thermia Heat Pump.
 
 ## Installation
 
