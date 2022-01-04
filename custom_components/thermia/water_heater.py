@@ -50,6 +50,11 @@ class ThermiaWaterHeater(CoordinatorEntity, WaterHeaterEntity):
         self.idx = idx
 
     @property
+    def available(self):
+        """Return True if entity is available."""
+        return self.coordinator.data.heat_pumps[self.idx].is_online
+
+    @property
     def name(self):
         """Return the name of the water heater."""
         return self.coordinator.data.heat_pumps[self.idx].name

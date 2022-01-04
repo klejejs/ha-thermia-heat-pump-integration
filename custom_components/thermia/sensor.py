@@ -39,6 +39,11 @@ class ThermiaOutdoorTemperatureSensor(CoordinatorEntity, SensorEntity):
         self.idx = idx
 
     @property
+    def available(self):
+        """Return True if entity is available."""
+        return self.coordinator.data.heat_pumps[self.idx].is_online
+
+    @property
     def name(self):
         """Return the name of the sensor."""
         return f"{self.coordinator.data.heat_pumps[self.idx].name} Outdoor Temperature"
