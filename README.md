@@ -14,11 +14,16 @@ _Component to integrate with [Thermia Heat Pump](https://github.com/klejejs/ha-t
 Platform | Description
 -- | --
 `water_heater` | Thermia Heat Pump integration
-`sensor` | Thermia Outside Temperature sensor
+`sensor` | Thermia Outside Temperature sensor (if available)
+`switch` | Thermia Heat Pump Hot Water Switch (if available)
 
-## Confirmed heat pumps that API supports:
+## Confirmed Thermia profiles that API supports:
 * Thermia Diplomat / Diplomat Duo
 * Thermia iTec
+
+
+## Confirmed Thermia models that API supports:
+* Danfoss DHP-AQ 9
 
 ## Setup
 

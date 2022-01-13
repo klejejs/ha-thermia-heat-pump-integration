@@ -1,0 +1,1 @@
+"""Thermia Heat Pump Switches."""

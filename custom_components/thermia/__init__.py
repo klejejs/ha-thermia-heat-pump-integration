@@ -14,7 +14,7 @@ from ThermiaOnlineAPI.api.ThermiaAPI import ThermiaAPI
 
 from .const import CONF_PASSWORD, CONF_USERNAME, DOMAIN
 
-PLATFORMS: list[str] = ["sensor", "water_heater"]
+PLATFORMS: list[str] = ["sensor", "switch", "water_heater"]
 
 
 _LOGGER = logging.getLogger(__name__)
