@@ -18,7 +18,7 @@ class ThermiaActiveAlarmsSensor(CoordinatorEntity, SensorEntity):
     @property
     def available(self):
         """Return True if entity is available."""
-        return self.coordinator.data.heat_pumps[self.idx].is_online
+        return self.coordinator.data.connected
 
     @property
     def name(self):

@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/github/license/custom-components/blueprint.svg?style=for-the-badge)](LICENSE)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
-Thermia Heat Pump Integration for Home Assistant
+Thermia Heat Pump Integration for Home Assistant. Depends on [Python Thermia Online API](https://github.com/klejejs/python-thermia-online-api).
 
 _Component to integrate with [Thermia Heat Pump](https://github.com/klejejs/ha-thermia-heat-pump-integration)._
 
