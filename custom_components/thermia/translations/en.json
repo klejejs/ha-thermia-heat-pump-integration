@@ -6,7 +6,8 @@
         "description": "Set up Thermia Heat Pump integration",
         "data": {
           "username": "Thermia Username",
-          "password": "Thermia Password"
+          "password": "Thermia Password",
+          "api_type": "API type (check readme for more info):"
         }
       }
     },

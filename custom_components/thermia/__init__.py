@@ -12,7 +12,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 from ThermiaOnlineAPI import Thermia
 from ThermiaOnlineAPI.api.ThermiaAPI import ThermiaAPI
 
-from .const import CONF_PASSWORD, CONF_USERNAME, DOMAIN
+from .const import API_TYPE, API_TYPE_CLASSIC, CONF_PASSWORD, CONF_USERNAME, DOMAIN
 
 PLATFORMS: list[str] = ["sensor", "switch", "water_heater"]
 
@@ -30,8 +30,11 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
 
     username = config_entry.data[CONF_USERNAME]
     password = config_entry.data[CONF_PASSWORD]
+    api_type = config_entry.data.get(API_TYPE, API_TYPE_CLASSIC)
 
-    thermia = await hass.async_add_executor_job(lambda: Thermia(username, password))
+    thermia = await hass.async_add_executor_job(
+        lambda: Thermia(username, password, api_type)
+    )
 
     coordinator = ThermiaDataUpdateCoordinator(hass, thermia)
 

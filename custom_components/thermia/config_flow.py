@@ -1,17 +1,26 @@
 """Config Flow for Thermia."""
 import logging
 
+import voluptuous as vol
+
 import homeassistant.helpers.config_validation as cv
 from homeassistant import config_entries
 from ThermiaOnlineAPI import AuthenticationException, Thermia
-from voluptuous import Required, Schema
 
-from .const import CONF_PASSWORD, CONF_USERNAME, DOMAIN
+from .const import (
+    API_TYPE,
+    API_TYPE_CLASSIC,
+    API_TYPES,
+    CONF_PASSWORD,
+    CONF_USERNAME,
+    DOMAIN,
+)
 
-STEP_USER_DATA_SCHEMA = Schema(
+STEP_USER_DATA_SCHEMA = vol.Schema(
     {
-        Required(CONF_USERNAME): cv.string,
-        Required(CONF_PASSWORD): cv.string,
+        vol.Required(CONF_USERNAME): cv.string,
+        vol.Required(CONF_PASSWORD): cv.string,
+        vol.Required(API_TYPE, default=API_TYPE_CLASSIC): vol.In(API_TYPES),
     }
 )
 
@@ -32,7 +41,11 @@ class ThermiaConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         """Check if Thermia credentials are valid."""
         try:
             thermia = await self.hass.async_add_executor_job(
-                lambda: Thermia(user_input[CONF_USERNAME], user_input[CONF_PASSWORD])
+                lambda: Thermia(
+                    user_input[CONF_USERNAME],
+                    user_input[CONF_PASSWORD],
+                    user_input[API_TYPE],
+                )
             )
             await self.hass.async_add_executor_job(thermia.fetch_heat_pumps)
         except Exception as error:
