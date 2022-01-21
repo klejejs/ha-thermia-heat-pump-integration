@@ -61,7 +61,7 @@ class ThermiaConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             try:
                 await self._check_credentials(user_input)
                 return self.async_create_entry(
-                    title="Thermia",
+                    title=f"Thermia ({user_input[CONF_USERNAME]})",
                     data=user_input,
                 )
             except Exception:
