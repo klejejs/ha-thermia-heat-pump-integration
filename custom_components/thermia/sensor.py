@@ -30,6 +30,22 @@ async def async_setup_entry(
     hass_thermia_sensors = []
 
     for idx, heat_pump in enumerate(coordinator.data.heat_pumps):
+        if heat_pump.heat_temperature:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Heat Target Temperature",
+                    MDI_TEMPERATURE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    "temperature",
+                    "measurement",
+                    "heat_temperature",
+                    TEMP_CELSIUS,
+                )
+            )
+
         if (
             heat_pump.is_outdoor_temp_sensor_functioning
             and heat_pump.outdoor_temperature is not None

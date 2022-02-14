@@ -7,6 +7,7 @@ from datetime import timedelta
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.typing import ConfigType
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from ThermiaOnlineAPI import Thermia
@@ -27,6 +28,8 @@ async def async_setup(hass: HomeAssistant, config: ConfigType):
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     """Set up the Thermia heat pumps."""
+    if hass.data.get(DOMAIN) is None:
+        hass.data.setdefault(DOMAIN, {})
 
     username = config_entry.data[CONF_USERNAME]
     password = config_entry.data[CONF_PASSWORD]
@@ -38,13 +41,16 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
 
     coordinator = ThermiaDataUpdateCoordinator(hass, thermia)
 
-    await coordinator.async_config_entry_first_refresh()
+    await coordinator.async_refresh()
 
-    hass.data.setdefault(DOMAIN, {})
+    if not coordinator.last_update_success:
+        raise ConfigEntryNotReady
+
     hass.data[DOMAIN][config_entry.entry_id] = coordinator
 
     hass.config_entries.async_setup_platforms(config_entry, PLATFORMS)
 
+    config_entry.async_on_unload(config_entry.add_update_listener(async_reload_entry))
     return True
 
 
@@ -87,3 +93,9 @@ class ThermiaDataUpdateCoordinator(DataUpdateCoordinator):
             raise UpdateFailed(exception)
 
         return self.thermia
+
+
+async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
+    """Reload config entry."""
+    await async_unload_entry(hass, config_entry)
+    await async_setup_entry(hass, config_entry)

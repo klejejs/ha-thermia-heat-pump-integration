@@ -77,7 +77,3 @@ class ThermiaHotWaterSwitch(CoordinatorEntity, SwitchEntity):
             await self.async_turn_off()
         else:
             await self.async_turn_on()
-
-    async def async_update(self):
-        """Update the switch."""
-        await self.coordinator.async_request_refresh()

@@ -54,7 +54,3 @@ class ThermiaActiveAlarmsSensor(CoordinatorEntity, SensorEntity):
     def native_value(self):
         """Return active alarms count of the sensor."""
         return self.coordinator.data.heat_pumps[self.idx].active_alarm_count
-
-    async def async_update(self):
-        """Update the sensor."""
-        await self.coordinator.async_request_refresh()
