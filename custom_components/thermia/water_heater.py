@@ -82,18 +82,30 @@ class ThermiaWaterHeater(CoordinatorEntity, WaterHeaterEntity):
     @property
     def min_temp(self):
         """Return the minimum temperature."""
+        default_min_temp = 0
+
+        if not self.available:
+            return default_min_temp
+
         min_temp = self.coordinator.data.heat_pumps[self.idx].heat_min_temperature_value
+
         if min_temp is not None:
             return min_temp
-        return 0
+        return default_min_temp
 
     @property
     def max_temp(self):
         """Return the maximum temperature."""
+        default_max_temp = 50
+
+        if not self.available:
+            return default_max_temp
+
         max_temp = self.coordinator.data.heat_pumps[self.idx].heat_max_temperature_value
+
         if max_temp is not None:
             return max_temp
-        return 40
+        return default_max_temp
 
     @property
     def current_temperature(self):
