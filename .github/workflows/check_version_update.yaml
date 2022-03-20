@@ -6,7 +6,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "* * * * *"
+    - cron: "0 0 * * *"
 
 jobs:
   check_and_create_pr:
