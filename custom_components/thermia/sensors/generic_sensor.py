@@ -87,6 +87,6 @@ class ThermiaGenericSensor(CoordinatorEntity, SensorEntity):
         return getattr(self.coordinator.data.heat_pumps[self.idx], self._value_prop)
 
     @property
-    def unit_of_measurement(self):
+    def native_unit_of_measurement(self):
         """Return the unit of measurement of the sensor."""
         return self._unit_of_measurement
