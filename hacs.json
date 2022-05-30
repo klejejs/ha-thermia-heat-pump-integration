@@ -1,5 +1,4 @@
 {
   "name": "Thermia Heat Pump",
-  "render_readme": true,
-  "domains": ["sensor", "switch", "water_heater"]
+  "render_readme": true
 }
