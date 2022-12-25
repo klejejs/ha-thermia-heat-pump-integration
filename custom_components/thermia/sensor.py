@@ -13,6 +13,7 @@ from .sensors.generic_sensor import ThermiaGenericSensor
 
 from .const import (
     DOMAIN,
+    MDI_INFORMATION_OUTLINE_ICON,
     MDI_TEMPERATURE_ICON,
     MDI_TIMER_COG_OUTLINE_ICON,
 )
@@ -235,6 +236,198 @@ async def async_setup_entry(
                     None,
                     "measurement",
                     "operational_status",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_auxiliary_heater_3kw is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Auxiliary Heater 3KW",
+                    MDI_INFORMATION_OUTLINE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_auxiliary_heater_3kw",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_auxiliary_heater_6kw is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Auxiliary Heater 6KW",
+                    MDI_INFORMATION_OUTLINE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_auxiliary_heater_6kw",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_auxiliary_heater_9kw is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Auxiliary Heater 9KW",
+                    MDI_INFORMATION_OUTLINE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_auxiliary_heater_9kw",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_auxiliary_heater_12kw is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Auxiliary Heater 12KW",
+                    MDI_INFORMATION_OUTLINE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_auxiliary_heater_12kw",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_auxiliary_heater_15kw is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Auxiliary Heater 15KW",
+                    MDI_INFORMATION_OUTLINE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_auxiliary_heater_15kw",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_compressor_status is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Compressor Status",
+                    MDI_INFORMATION_OUTLINE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_compressor_status",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_brine_pump_status is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Brine Pump Status",
+                    MDI_INFORMATION_OUTLINE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_brine_pump_status",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_radiator_pump_status is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Radiator Pump Status",
+                    MDI_INFORMATION_OUTLINE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_radiator_pump_status",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_cooling_status is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Cooling Status",
+                    MDI_INFORMATION_OUTLINE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_cooling_status",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_hot_water_status is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Hot Water Status",
+                    MDI_INFORMATION_OUTLINE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_hot_water_status",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_heating_status is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Heating Status",
+                    MDI_INFORMATION_OUTLINE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_heating_status",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_integral is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Integral",
+                    "mdi:math-integral",
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_integral",
                     None,
                 )
             )
