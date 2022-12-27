@@ -73,7 +73,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
 class ThermiaDataUpdateCoordinator(DataUpdateCoordinator):
     """Thermia Data Update Coordinator."""
 
-    def __init__(self, hass: HomeAssistant, thermia: ThermiaAPI):
+    def __init__(self, hass: HomeAssistant, thermia: Thermia):
         """Initialize the data update object."""
 
         self.thermia = thermia

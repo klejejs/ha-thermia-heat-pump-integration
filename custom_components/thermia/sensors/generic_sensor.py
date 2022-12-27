@@ -83,7 +83,7 @@ class ThermiaGenericSensor(CoordinatorEntity, SensorEntity):
 
     @property
     def native_value(self):
-        """Return active alarms count of the sensor."""
+        """Return value of the sensor."""
         return getattr(self.coordinator.data.heat_pumps[self.idx], self._value_prop)
 
     @property
