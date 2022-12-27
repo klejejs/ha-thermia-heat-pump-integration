@@ -9,7 +9,7 @@
     "@klejejs"
   ],
   "requirements": [
-    "ThermiaOnlineAPI==3.4.dev1"
+    "ThermiaOnlineAPI==3.4.dev2"
   ],
   "version": "1.0",
   "iot_class": "cloud_polling",
