@@ -74,4 +74,8 @@ class ThermiaOperationalStatusBinarySensor(CoordinatorEntity, BinarySensorEntity
         operational_status_name = self.coordinator.data.heat_pumps[
             self.idx
         ].available_operational_statuses_map[self._value_prop]
-        return operational_status_name in active_operational_statuses
+
+        if type(active_operational_statuses) is list:
+            return operational_status_name in active_operational_statuses
+        else:
+            return operational_status_name == active_operational_statuses
