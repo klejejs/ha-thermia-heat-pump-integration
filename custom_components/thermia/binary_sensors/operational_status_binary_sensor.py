@@ -68,15 +68,23 @@ class ThermiaOperationalStatusBinarySensor(CoordinatorEntity, BinarySensorEntity
     @property
     def is_on(self):
         """Return the state of the sensor."""
-        operational_status_value = getattr(
-            self.coordinator.data.heat_pumps[self.idx], self._value_prop
+        heat_pump = self.coordinator.data.heat_pumps[self.idx]
+
+        operational_status_value = getattr(heat_pump, self._value_prop)
+        active_operational_statuses = heat_pump.operational_status
+        available_operational_statuses_map = (
+            heat_pump.available_operational_statuses_map
         )
-        active_operational_statuses = self.coordinator.data.heat_pumps[
-            self.idx
-        ].operational_status
-        operational_status_name = self.coordinator.data.heat_pumps[
-            self.idx
-        ].available_operational_statuses_map[operational_status_value]
+
+        if (
+            active_operational_statuses is None
+            or available_operational_statuses_map is None
+        ):
+            return None
+
+        operational_status_name = available_operational_statuses_map[
+            operational_status_value
+        ]
 
         if type(active_operational_statuses) is list:
             return operational_status_name in active_operational_statuses
