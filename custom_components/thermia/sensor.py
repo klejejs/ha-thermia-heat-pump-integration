@@ -220,6 +220,22 @@ async def async_setup_entry(
                 )
             )
 
+        if heat_pump.buffer_tank_temperature is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Buffer Tank Temperature",
+                    MDI_TEMPERATURE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    "temperature",
+                    "measurement",
+                    "buffer_tank_temperature",
+                    TEMP_CELSIUS,
+                )
+            )
+
         ###########################################################################
         # Operational status data
         ###########################################################################
