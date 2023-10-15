@@ -266,7 +266,7 @@ async def async_setup_entry(
                     "mdi:thermostat",
                     EntityCategory.DIAGNOSTIC,
                     None,
-                    "measurement",
+                    None,
                     "operational_status",
                     None,
                 )
