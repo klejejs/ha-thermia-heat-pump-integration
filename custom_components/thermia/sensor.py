@@ -236,6 +236,22 @@ async def async_setup_entry(
                 )
             )
 
+        if heat_pump.pool_temperature is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "Pool Temperature",
+                    MDI_TEMPERATURE_ICON,
+                    EntityCategory.DIAGNOSTIC,
+                    "temperature",
+                    "measurement",
+                    "pool_temperature",
+                    TEMP_CELSIUS,
+                )
+            )
+            
         ###########################################################################
         # Operational status data
         ###########################################################################
