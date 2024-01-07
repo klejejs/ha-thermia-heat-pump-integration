@@ -36,7 +36,7 @@ async def async_setup_entry(
                     "is_online",
                     "Compressor Status",
                     MDI_INFORMATION_OUTLINE_ICON,
-                    BinarySensorDeviceClass.POWER,
+                    BinarySensorDeviceClass.RUNNING,
                     "operational_status_compressor_status",
                 )
             )
@@ -49,7 +49,7 @@ async def async_setup_entry(
                     "is_online",
                     "Brine Pump Status",
                     MDI_INFORMATION_OUTLINE_ICON,
-                    BinarySensorDeviceClass.POWER,
+                    BinarySensorDeviceClass.RUNNING,
                     "operational_status_brine_pump_status",
                 )
             )
@@ -62,7 +62,7 @@ async def async_setup_entry(
                     "is_online",
                     "Radiator Pump Status",
                     MDI_INFORMATION_OUTLINE_ICON,
-                    BinarySensorDeviceClass.POWER,
+                    BinarySensorDeviceClass.RUNNING,
                     "operational_status_radiator_pump_status",
                 )
             )
@@ -75,7 +75,7 @@ async def async_setup_entry(
                     "is_online",
                     "Cooling Status",
                     MDI_INFORMATION_OUTLINE_ICON,
-                    BinarySensorDeviceClass.POWER,
+                    BinarySensorDeviceClass.RUNNING,
                     "operational_status_cooling_status",
                 )
             )
@@ -88,7 +88,7 @@ async def async_setup_entry(
                     "is_online",
                     "Hot Water Status",
                     MDI_INFORMATION_OUTLINE_ICON,
-                    BinarySensorDeviceClass.POWER,
+                    BinarySensorDeviceClass.RUNNING,
                     "operational_status_hot_water_status",
                 )
             )
@@ -101,7 +101,7 @@ async def async_setup_entry(
                     "is_online",
                     "Heating Status",
                     MDI_INFORMATION_OUTLINE_ICON,
-                    BinarySensorDeviceClass.POWER,
+                    BinarySensorDeviceClass.RUNNING,
                     "operational_status_heating_status",
                 )
             )

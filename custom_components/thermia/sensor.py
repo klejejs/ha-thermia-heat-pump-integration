@@ -251,26 +251,10 @@ async def async_setup_entry(
                     TEMP_CELSIUS,
                 )
             )
-            
+
         ###########################################################################
         # Operational status data
         ###########################################################################
-
-        if heat_pump.operational_status is not None:
-            hass_thermia_sensors.append(
-                ThermiaGenericSensor(
-                    coordinator,
-                    idx,
-                    "is_online",
-                    "Operational Status",
-                    "mdi:thermostat",
-                    EntityCategory.DIAGNOSTIC,
-                    None,
-                    None,
-                    "operational_status",
-                    None,
-                )
-            )
 
         if heat_pump.operational_status_auxiliary_heater_3kw is not None:
             hass_thermia_sensors.append(
