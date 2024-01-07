@@ -6,8 +6,7 @@ import logging
 
 from homeassistant.components.water_heater import (
     WaterHeaterEntity,
-    SUPPORT_OPERATION_MODE,
-    SUPPORT_TARGET_TEMPERATURE,
+    WaterHeaterEntityFeature,
 )
 from homeassistant.const import (
     ATTR_TEMPERATURE,
@@ -135,7 +134,10 @@ class ThermiaWaterHeater(CoordinatorEntity, WaterHeaterEntity):
     @property
     def supported_features(self):
         """Return the list of supported features."""
-        return SUPPORT_TARGET_TEMPERATURE | SUPPORT_OPERATION_MODE
+        return (
+            WaterHeaterEntityFeature.TARGET_TEMPERATURE
+            | WaterHeaterEntityFeature.OPERATION_MODE
+        )
 
     async def async_set_temperature(self, **kwargs):
         """Set new target temperature."""
