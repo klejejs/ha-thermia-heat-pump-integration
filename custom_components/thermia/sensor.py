@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import TEMP_CELSIUS, TIME_HOURS
+from homeassistant.const import UnitOfTemperature, UnitOfTime
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -43,7 +43,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "heat_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -62,7 +62,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "outdoor_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -81,7 +81,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "indoor_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -100,7 +100,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "hot_water_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -120,7 +120,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "supply_line_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -136,7 +136,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "desired_supply_line_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -152,7 +152,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "return_line_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -168,7 +168,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "brine_out_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -184,7 +184,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "brine_in_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -200,7 +200,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "cooling_tank_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -216,7 +216,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "cooling_supply_line_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -232,7 +232,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "buffer_tank_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -248,7 +248,7 @@ async def async_setup_entry(
                     "temperature",
                     "measurement",
                     "pool_temperature",
-                    TEMP_CELSIUS,
+                    UnitOfTemperature.CELSIUS,
                 )
             )
 
@@ -368,7 +368,7 @@ async def async_setup_entry(
                     None,
                     "total_increasing",
                     "compressor_operational_time",
-                    TIME_HOURS,
+                    UnitOfTime.HOURS,
                 )
             )
 
@@ -384,7 +384,7 @@ async def async_setup_entry(
                     None,
                     "total_increasing",
                     "hot_water_operational_time",
-                    TIME_HOURS,
+                    UnitOfTime.HOURS,
                 )
             )
 
@@ -400,7 +400,7 @@ async def async_setup_entry(
                     None,
                     "total_increasing",
                     "auxiliary_heater_1_operational_time",
-                    TIME_HOURS,
+                    UnitOfTime.HOURS,
                 )
             )
 
@@ -416,7 +416,7 @@ async def async_setup_entry(
                     None,
                     "total_increasing",
                     "auxiliary_heater_2_operational_time",
-                    TIME_HOURS,
+                    UnitOfTime.HOURS,
                 )
             )
 
@@ -432,7 +432,7 @@ async def async_setup_entry(
                     None,
                     "total_increasing",
                     "auxiliary_heater_3_operational_time",
-                    TIME_HOURS,
+                    UnitOfTime.HOURS,
                 )
             )
 
