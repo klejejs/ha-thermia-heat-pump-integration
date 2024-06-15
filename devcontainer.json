@@ -6,13 +6,15 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "python.pythonPath": "/usr/local/bin/python"
+        "python.pythonPath": "/usr/local/bin/python",
+        "python.formatting.provider": "black"
       },
       "extensions": [
         "GitHub.copilot",
         "github.vscode-pull-request-github",
         "ms-python.python",
-        "ms-python.vscode-pylance"
+        "ms-python.vscode-pylance",
+        "ms-python.black-formatter"
       ]
     }
   }

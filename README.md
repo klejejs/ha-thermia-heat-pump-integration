@@ -31,10 +31,6 @@ Platform | Description
 
 To set up Thermia Heat Pump Integration, go to Settings -> Integrations -> Add Integration and search for Thermia Heat Pump.
 
-Depending on the url you use to see your heat pump online, you need to choose the following API type:
-* `classic` - for url: https://online.thermia.se
-* `genesis` - for url: https://online-genesis.thermia.se
-
 ## Installation
 
 Open HACS, go to the Integrations view and search for Thermia Heat Pump Integration.
