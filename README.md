@@ -25,6 +25,7 @@ Platform | Description
 ## Confirmed Thermia models that API supports:
 * Danfoss DHP-AQ 9
 * Calibra Duo
+* Atec
 
 ## Setup
 
