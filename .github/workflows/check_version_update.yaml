@@ -33,9 +33,9 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.TOKEN_FOR_GITHUB_ACCESS }}
-          commit-message: Update ThermiaOnlineAPI version
-          title: Update ThermiaOnlineAPI version
+          commit-message: Update ThermiaOnlineAPI version to ${{ env.LATEST_API_VERSION }}
+          title: Update ThermiaOnlineAPI version to ${{ env.LATEST_API_VERSION }}
           body: |
-            This PR updates the ThermiaOnlineAPI version to the latest version.
+            This PR updates the ThermiaOnlineAPI version to the latest version which is ${{ env.LATEST_API_VERSION }}.
           branch: update-dependencies
           delete-branch: true
