@@ -15,5 +15,5 @@ install_packages() {
 }
 
 install_packages "pip<23.2,>=21.3.1"
-install_packages setuptools wheel
+install_packages setuptools wheel black
 install_packages -r requirements.txt
