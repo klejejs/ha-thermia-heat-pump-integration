@@ -3,7 +3,8 @@ set -e
 
 manifest_file="./custom_components/thermia/manifest.json"
 
-latest_version=ThermiaOnlineAPI==$(lastversion ThermiaOnlineAPI --at pip)
+latest_version_number=$(lastversion ThermiaOnlineAPI --at pip)
+latest_version=ThermiaOnlineAPI==$latest_version_number
 
 echo "Last version of ThermiaOnlineAPI: $latest_version"
 
@@ -15,7 +16,7 @@ if [ "$current_version" != "$latest_version" ]; then
   echo "Updating version to $latest_version"
   version=$latest_version jq ".requirements = [env.version]" $manifest_file > tmp.$$.json && mv tmp.$$.json $manifest_file
   echo "ThermiaOnlineAPI version updated to $latest_version"
-  echo "LATEST_API_VERSION=$latest_version" >> $GITHUB_ENV
+  echo "LATEST_API_VERSION=$latest_version_number" >> $GITHUB_ENV
 else
   echo "Version $current_version is already up to date"
 fi
