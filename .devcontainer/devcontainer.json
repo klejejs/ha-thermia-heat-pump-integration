@@ -7,7 +7,8 @@
     "vscode": {
       "settings": {
         "python.pythonPath": "/usr/local/bin/python",
-        "python.formatting.provider": "black"
+        "python.formatting.provider": "black",
+        "editor.defaultFormatter": "ms-python.black-formatter"
       },
       "extensions": [
         "GitHub.copilot",
