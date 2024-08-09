@@ -132,10 +132,12 @@ class ThermiaWaterHeater(CoordinatorEntity, WaterHeaterEntity):
     @property
     def supported_features(self):
         """Return the list of supported features."""
-        return (
-            WaterHeaterEntityFeature.TARGET_TEMPERATURE
-            | WaterHeaterEntityFeature.OPERATION_MODE
-        )
+        features = WaterHeaterEntityFeature.TARGET_TEMPERATURE
+
+        if self.current_operation is not None:
+            features |= WaterHeaterEntityFeature.OPERATION_MODE
+
+        return features
 
     async def async_set_temperature(self, **kwargs):
         """Set new target temperature."""
