@@ -58,6 +58,7 @@ class ThermiaOperationalStatusBinarySensor(CoordinatorEntity, BinarySensorEntity
             "name": self.coordinator.data.heat_pumps[self.idx].name,
             "manufacturer": "Thermia",
             "model": self.coordinator.data.heat_pumps[self.idx].model,
+            "model_id": self.coordinator.data.heat_pumps[self.idx].model_id,
         }
 
     @property
