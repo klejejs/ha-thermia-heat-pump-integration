@@ -1,2 +1,2 @@
 homeassistant==2024.4.1
-ThermiaOnlineAPI==5.1.0
+ThermiaOnlineAPI==5.2.0
