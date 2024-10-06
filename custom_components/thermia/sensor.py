@@ -256,86 +256,6 @@ async def async_setup_entry(
         # Operational status data
         ###########################################################################
 
-        if heat_pump.operational_status_auxiliary_heater_3kw is not None:
-            hass_thermia_sensors.append(
-                ThermiaGenericSensor(
-                    coordinator,
-                    idx,
-                    "is_online",
-                    "Auxiliary Heater 3KW",
-                    MDI_INFORMATION_OUTLINE_ICON,
-                    EntityCategory.DIAGNOSTIC,
-                    None,
-                    "measurement",
-                    "operational_status_auxiliary_heater_3kw",
-                    None,
-                )
-            )
-
-        if heat_pump.operational_status_auxiliary_heater_6kw is not None:
-            hass_thermia_sensors.append(
-                ThermiaGenericSensor(
-                    coordinator,
-                    idx,
-                    "is_online",
-                    "Auxiliary Heater 6KW",
-                    MDI_INFORMATION_OUTLINE_ICON,
-                    EntityCategory.DIAGNOSTIC,
-                    None,
-                    "measurement",
-                    "operational_status_auxiliary_heater_6kw",
-                    None,
-                )
-            )
-
-        if heat_pump.operational_status_auxiliary_heater_9kw is not None:
-            hass_thermia_sensors.append(
-                ThermiaGenericSensor(
-                    coordinator,
-                    idx,
-                    "is_online",
-                    "Auxiliary Heater 9KW",
-                    MDI_INFORMATION_OUTLINE_ICON,
-                    EntityCategory.DIAGNOSTIC,
-                    None,
-                    "measurement",
-                    "operational_status_auxiliary_heater_9kw",
-                    None,
-                )
-            )
-
-        if heat_pump.operational_status_auxiliary_heater_12kw is not None:
-            hass_thermia_sensors.append(
-                ThermiaGenericSensor(
-                    coordinator,
-                    idx,
-                    "is_online",
-                    "Auxiliary Heater 12KW",
-                    MDI_INFORMATION_OUTLINE_ICON,
-                    EntityCategory.DIAGNOSTIC,
-                    None,
-                    "measurement",
-                    "operational_status_auxiliary_heater_12kw",
-                    None,
-                )
-            )
-
-        if heat_pump.operational_status_auxiliary_heater_15kw is not None:
-            hass_thermia_sensors.append(
-                ThermiaGenericSensor(
-                    coordinator,
-                    idx,
-                    "is_online",
-                    "Auxiliary Heater 15KW",
-                    MDI_INFORMATION_OUTLINE_ICON,
-                    EntityCategory.DIAGNOSTIC,
-                    None,
-                    "measurement",
-                    "operational_status_auxiliary_heater_15kw",
-                    None,
-                )
-            )
-
         if heat_pump.operational_status_integral is not None:
             hass_thermia_sensors.append(
                 ThermiaGenericSensor(
@@ -457,4 +377,7 @@ async def async_setup_entry(
         for idx, _ in enumerate(coordinator.data.heat_pumps)
     ]
 
-    async_add_entities([*hass_thermia_active_alarms_sensors, *hass_thermia_sensors])
+    async_add_entities([
+        *hass_thermia_active_alarms_sensors,
+        *hass_thermia_sensors
+    ])
