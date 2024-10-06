@@ -51,6 +51,26 @@ custom_components/thermia_water_heater/__init__.py
 custom_components/thermia_water_heater/manifest.json
 custom_components/thermia_water_heater/water_heater.py
 ```
+## Manually installing Python Thermia Online API
+
+Ordinarily Home Assistant will automatically install dependencies such as the [Python Thermia Online API](https://github.com/klejejs/python-thermia-online-api) when installing an integration. However if you are working on improving this integration, it may be helpful to install a forked version of the [Python Thermia Online API](https://github.com/klejejs/python-thermia-online-api) with improvements you may be working on. The easiest way to do this, is to push your changes to a fork of [Python Thermia Online API](https://github.com/klejejs/python-thermia-online-api) on your github.
+
+Then if you have manually installed Home Assistant, you can install the forked Thermia Online API as follows:
+
+```shell
+root@ha:~$ pip uninstall -y ThermiaOnlineAPI
+root@ha:~$ pip install git+https://github.com/<username>/python-thermia-online-api.git#egg=ThermiaOnlineAPI
+```
+
+Otherwise if you are using the [Home Assistant Virtual Machine](https://www.home-assistant.io/installation/alternative), you will first need to logon to the docker container where Home Assistant is running before following the steps above.
+
+```shell
+root@ha:~$ docker exec -it homeassistant sh
+/config # pip uninstall -y ThermiaOnlineAPI
+/config # pip install git+https://github.com/<username>/python-thermia-online-api.git#egg=ThermiaOnlineAPI
+...
+```
+
 
 ---
 
