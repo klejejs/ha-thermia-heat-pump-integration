@@ -1,7 +1,10 @@
 {
   "name": "HA Thermia Water Heater Integration",
   "image": "mcr.microsoft.com/devcontainers/python:1-3.12",
-  "postCreateCommand": "./scripts/setup.sh",
+  "postCreateCommand": {
+    "setup": "./scripts/setup.sh",
+    "git": "git config --global --add safe.directory /workspaces/ha-thermia-heat-pump-integration"
+  },
   "remoteUser": "vscode",
   "customizations": {
     "vscode": {
