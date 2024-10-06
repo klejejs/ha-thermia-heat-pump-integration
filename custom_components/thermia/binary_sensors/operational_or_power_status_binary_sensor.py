@@ -8,8 +8,8 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from ..const import DOMAIN
 
 
-class ThermiaOperationalStatusBinarySensor(CoordinatorEntity, BinarySensorEntity):
-    """Representation of an Thermia Operational Status binary sensor."""
+class ThermiaOperationalOrPowerStatusBinarySensor(CoordinatorEntity, BinarySensorEntity):
+    """Representation of an Thermia Operational or Power Status binary sensor."""
 
     def __init__(
         self,
@@ -19,7 +19,8 @@ class ThermiaOperationalStatusBinarySensor(CoordinatorEntity, BinarySensorEntity
         binary_sensor_name,
         mdi_icon,
         device_class,
-        value_prop,
+        status_value,
+        running_status_list,
     ):
         super().__init__(coordinator)
         self.idx = idx
@@ -28,7 +29,8 @@ class ThermiaOperationalStatusBinarySensor(CoordinatorEntity, BinarySensorEntity
         self._binary_sensor_name = binary_sensor_name
         self._mdi_icon = mdi_icon
         self._device_class = device_class
-        self._value_prop = value_prop
+        self._status_value = status_value
+        self._running_status_list = running_status_list
 
     @property
     def available(self):
@@ -71,4 +73,4 @@ class ThermiaOperationalStatusBinarySensor(CoordinatorEntity, BinarySensorEntity
         """Return the state of the sensor."""
         heat_pump = self.coordinator.data.heat_pumps[self.idx]
 
-        return getattr(heat_pump, self._value_prop)
+        return self._status_value in getattr(heat_pump, self._running_status_list)
