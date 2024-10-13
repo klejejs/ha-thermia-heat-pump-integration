@@ -134,7 +134,7 @@ class ThermiaWaterHeater(CoordinatorEntity, WaterHeaterEntity):
         """Return the list of supported features."""
         features = WaterHeaterEntityFeature.TARGET_TEMPERATURE
 
-        if self.current_operation is not None:
+        if self.current_operation is not None and self.coordinator.data.heat_pumps[self.idx].is_operation_mode_read_only is False:
             features |= WaterHeaterEntityFeature.OPERATION_MODE
 
         return features
