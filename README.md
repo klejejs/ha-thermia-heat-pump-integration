@@ -14,18 +14,17 @@ _Component to integrate with [Thermia Heat Pump](https://github.com/klejejs/ha-t
 Platform | Description
 -- | --
 `water_heater` | Thermia Heat Pump integration
-`sensor` | Thermia Outside Temperature sensor (if available)
-`switch` | Thermia Heat Pump Hot Water Switch (if available)
+`binary_sensor` | Operational and power status binary sensors
+`sensor` | Alarms sensor and different heat pump sensors
+`switch` | Hot water and hot water boost switches
 
-## Confirmed Thermia profiles that API supports:
-* Thermia Diplomat / Diplomat Duo
-* Thermia iTec
+## Supported heat pump models:
 
+The integration supports heat pumps that are supported by the underlying [Python Thermia Online API](https://github.com/klejejs/python-thermia-online-api). To see the list of supported heat pumps, please check the list of example heat pump data files in the API repository [here](https://github.com/klejejs/python-thermia-online-api/tree/main/ThermiaOnlineAPI/tests/debug_files).
 
-## Confirmed Thermia models that API supports:
-* Danfoss DHP-AQ 9
-* Calibra Duo
-* Atec
+## Adding support for new heat pump models:
+
+If your heat pump is not working as expected or is not in the supported heat pump list, please follow the instructions in the [Python Thermia Online API](https://github.com/klejejs/python-thermia-online-api/tree/main?tab=readme-ov-file#regarding-unsupported-models) repository to add support for your heat pump model.
 
 ## Setup
 
@@ -39,19 +38,8 @@ Open HACS, go to the Integrations view and search for Thermia Heat Pump Integrat
 
 1. Using the tool of choice open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
 2. If you do not have a `custom_components` directory (folder) there, you need to create it.
-3. In the `custom_components` directory (folder) create a new folder called `thermia_water_heater`.
-4. Download _all_ the files from the `custom_components/thermia_water_heater/` directory (folder) in this repository.
-5. Place the files you downloaded in the new directory (folder) you created.
-6. Restart Home Assistant
-
-Using your HA configuration directory (folder) as a starting point you should now also have this:
-
-```text
-custom_components/thermia_water_heater/__init__.py
-custom_components/thermia_water_heater/manifest.json
-custom_components/thermia_water_heater/water_heater.py
-```
-
----
+3. Download the latest release zip file either from repository releases or using this [link](https://github.com/klejejs/python-thermia-online-api/releases/latest/download/thermia.zip).
+4. Extract the content of the zip file to the `custom_components` directory (folder) in your HA configuration directory (folder).
+5. Restart Home Assistant.
 
 ## Contributions are welcome!
