@@ -6,13 +6,14 @@ import asyncio
 import logging
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, ServiceCall
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.typing import ConfigType
 from ThermiaOnlineAPI import Thermia
 
-from .const import CONF_PASSWORD, CONF_USERNAME, DOMAIN
+from .const import CONF_PASSWORD, CONF_USERNAME, DEBUG_ACTION_NAME, DOMAIN
 from .coordinator import ThermiaDataUpdateCoordinator
+from .services import ThermiaServicesSetup
 
 PLATFORMS: list[str] = ["binary_sensor", "sensor", "switch", "water_heater"]
 
@@ -49,6 +50,8 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     config_entry.async_on_unload(
         config_entry.add_update_listener(async_reload_entry))
 
+    ThermiaServicesSetup(hass, coordinator)
+
     return True
 
 
@@ -63,6 +66,10 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
             ]
         )
     )
+
+    if hass.services.has_service(DOMAIN, DEBUG_ACTION_NAME):
+        hass.services.async_remove(DOMAIN, DEBUG_ACTION_NAME)
+
     if unload_ok:
         hass.data[DOMAIN].pop(entry.entry_id)
 
