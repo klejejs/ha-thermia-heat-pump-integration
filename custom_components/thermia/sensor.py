@@ -13,7 +13,6 @@ from .sensors.generic_sensor import ThermiaGenericSensor
 
 from .const import (
     DOMAIN,
-    MDI_INFORMATION_OUTLINE_ICON,
     MDI_TEMPERATURE_ICON,
     MDI_TIMER_COG_OUTLINE_ICON,
 )
