@@ -16,6 +16,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
+from .coordinator import ThermiaDataUpdateCoordinator
 
 
 _LOGGER = logging.getLogger(__name__)
@@ -28,20 +29,20 @@ async def async_setup_entry(
 ) -> None:
     """Set up the Thermia water heater."""
 
-    coordinator = hass.data[DOMAIN][config_entry.entry_id]
+    coordinator: ThermiaDataUpdateCoordinator = hass.data[DOMAIN][config_entry.entry_id]
 
     hass_water_heaters = [
         ThermiaWaterHeater(coordinator, idx)
-        for idx, _ in enumerate(coordinator.data.heat_pumps)
+        for idx in range(len(coordinator.data.heat_pumps))
     ]
 
     async_add_entities(hass_water_heaters)
 
 
-class ThermiaWaterHeater(CoordinatorEntity, WaterHeaterEntity):
+class ThermiaWaterHeater(CoordinatorEntity[ThermiaDataUpdateCoordinator], WaterHeaterEntity):
     """Representation of an Thermia water heater."""
 
-    def __init__(self, coordinator, idx):
+    def __init__(self, coordinator: ThermiaDataUpdateCoordinator, idx: int):
         super().__init__(coordinator)
         self.idx = idx
 
