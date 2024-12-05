@@ -1,0 +1,49 @@
+name: Bug report
+description: Create a bug report for something that is not working as expected
+title: "Bug: "
+labels:
+  - bug
+  - needs-triage
+assignees:
+  - klejejs
+
+body:
+  - type: textarea
+    id: issue
+    validations:
+      required: true
+    attributes:
+      label: Issue
+      description: A clear and concise description of what the bug is.
+
+  - type: textarea
+    id: expected_behavior
+    validations:
+      required: true
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+
+  - type: textarea
+    id: debug_file_data
+    validations:
+      required: true
+    attributes:
+      label: Debug File Data
+      description: Please attach Thermia debug file data that can help diagnose the issue. To get the debug file data, see [README.md](https://github.com/klejejs/ha-thermia-heat-pump-integration?tab=readme-ov-file#adding-support-for-new-heat-pump-models).
+
+  - type: checkboxes
+    id: latest_version
+    attributes:
+      label: Are you running the latest version?
+      description: Please check if you are running the latest version of the integration before submitting a bug report.
+      options:
+        - label: I have checked and am running the latest version of the integration
+          required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here.
+      placeholder: Add additional context here
