@@ -6,14 +6,17 @@ from homeassistant.components.sensor import SensorEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from ..const import DOMAIN
+from ..coordinator import ThermiaDataUpdateCoordinator
 
 
-class ThermiaActiveAlarmsSensor(CoordinatorEntity, SensorEntity):
+class ThermiaActiveAlarmsSensor(
+    CoordinatorEntity[ThermiaDataUpdateCoordinator], SensorEntity
+):
     """Representation of an Thermia active alarms sensor."""
 
-    def __init__(self, coordinator, idx):
+    def __init__(self, coordinator, idx: int):
         super().__init__(coordinator)
-        self.idx = idx
+        self.idx: int = idx
 
     @property
     def available(self):

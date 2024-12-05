@@ -9,8 +9,8 @@ from homeassistant.exceptions import ServiceValidationError
 from homeassistant.helpers.service import async_extract_entity_ids
 from homeassistant.helpers.template import device_attr
 
-from .const import DEBUG_ACTION_NAME, DEFAULT_DEBUG_FILENAME, DOMAIN
 from .coordinator import ThermiaDataUpdateCoordinator
+from .const import DEBUG_ACTION_NAME, DEFAULT_DEBUG_FILENAME, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -35,10 +35,7 @@ class ThermiaServicesSetup:
         entity_ids = await async_extract_entity_ids(self.hass, call)
 
         entity_ids = list(
-            filter(
-                lambda entity_id: entity_id.startswith("water_heater."),
-                entity_ids
-            )
+            filter(lambda entity_id: entity_id.startswith("water_heater."), entity_ids)
         )
 
         if len(entity_ids) == 0 or len(entity_ids) > 1:
@@ -74,9 +71,7 @@ class ThermiaServicesSetup:
         )
 
         if heat_pump is None:
-            raise ServiceValidationError(
-                "Cannot find heat pump by unique_id"
-            )
+            raise ServiceValidationError("Cannot find heat pump by unique_id")
 
         debug_data = await self.hass.async_add_executor_job(lambda: heat_pump.debug())
 

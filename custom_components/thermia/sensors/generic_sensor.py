@@ -6,35 +6,38 @@ from homeassistant.components.sensor import SensorEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from ..const import DOMAIN
+from ..coordinator import ThermiaDataUpdateCoordinator
 
 
-class ThermiaGenericSensor(CoordinatorEntity, SensorEntity):
+class ThermiaGenericSensor(
+    CoordinatorEntity[ThermiaDataUpdateCoordinator], SensorEntity
+):
     """Representation of an Thermia generic sensor."""
 
     def __init__(
         self,
         coordinator,
         idx,
-        is_online_prop,
-        sensor_name,
-        mdi_icon,
-        entity_category,
-        device_class,
-        state_class,
-        value_prop,
-        unit_of_measurement,
+        is_online_prop: str,
+        sensor_name: str,
+        mdi_icon: str,
+        entity_category: str,
+        device_class: str | None,
+        state_class: str,
+        value_prop: str,
+        unit_of_measurement: str | None,
     ):
         super().__init__(coordinator)
-        self.idx = idx
+        self.idx: int = idx
 
-        self._is_online_prop = is_online_prop
-        self._sensor_name = sensor_name
-        self._mdi_icon = mdi_icon
-        self._entity_category = entity_category
-        self._device_class = device_class
-        self._state_class = state_class
-        self._value_prop = value_prop
-        self._unit_of_measurement = unit_of_measurement
+        self._is_online_prop: str = is_online_prop
+        self._sensor_name: str = sensor_name
+        self._mdi_icon: str = mdi_icon
+        self._entity_category: str = entity_category
+        self._device_class: str | None = device_class
+        self._state_class: str = state_class
+        self._value_prop: str = value_prop
+        self._unit_of_measurement: str | None = unit_of_measurement
 
     @property
     def available(self):

@@ -6,14 +6,17 @@ from homeassistant.components.switch import SwitchEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from ..const import DOMAIN
+from ..coordinator import ThermiaDataUpdateCoordinator
 
 
-class ThermiaHotWaterBoostSwitch(CoordinatorEntity, SwitchEntity):
+class ThermiaHotWaterBoostSwitch(
+    CoordinatorEntity[ThermiaDataUpdateCoordinator], SwitchEntity
+):
     """Representation of an Thermia hot water boost switch."""
 
-    def __init__(self, coordinator, idx):
+    def __init__(self, coordinator, idx: int):
         super().__init__(coordinator)
-        self.idx = idx
+        self.idx: int = idx
 
     @property
     def available(self):

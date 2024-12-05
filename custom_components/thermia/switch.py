@@ -6,10 +6,10 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
+from .const import DOMAIN
+from .coordinator import ThermiaDataUpdateCoordinator
 from .switches.hot_water_switch import ThermiaHotWaterSwitch
 from .switches.hot_water_boost_switch import ThermiaHotWaterBoostSwitch
-
-from .const import DOMAIN
 
 
 async def async_setup_entry(
@@ -19,7 +19,7 @@ async def async_setup_entry(
 ) -> None:
     """Set up the Thermia switches."""
 
-    coordinator = hass.data[DOMAIN][config_entry.entry_id]
+    coordinator: ThermiaDataUpdateCoordinator = hass.data[DOMAIN][config_entry.entry_id]
 
     hass_thermia_switches = []
 
