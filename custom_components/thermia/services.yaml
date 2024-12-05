@@ -1,0 +1,7 @@
+debug:
+  name: Generate debug report
+  description: Create a debug report for your Thermia heat pump. This can be useful for troubleshooting and should be added to a GitHub issue when asking for help.
+  target:
+    entity:
+      integration: thermia
+      domain: water_heater
