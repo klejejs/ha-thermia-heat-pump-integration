@@ -2,35 +2,41 @@
 
 from __future__ import annotations
 
-from homeassistant.components.binary_sensor import BinarySensorEntity
+from homeassistant.components.binary_sensor import (
+    BinarySensorDeviceClass,
+    BinarySensorEntity,
+)
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from ..const import DOMAIN
+from ..coordinator import ThermiaDataUpdateCoordinator
 
 
-class ThermiaOperationalOrPowerStatusBinarySensor(CoordinatorEntity, BinarySensorEntity):
+class ThermiaOperationalOrPowerStatusBinarySensor(
+    CoordinatorEntity[ThermiaDataUpdateCoordinator], BinarySensorEntity
+):
     """Representation of an Thermia Operational or Power Status binary sensor."""
 
     def __init__(
         self,
         coordinator,
-        idx,
-        is_online_prop,
-        binary_sensor_name,
-        mdi_icon,
-        device_class,
-        status_value,
-        running_status_list,
+        idx: int,
+        is_online_prop: str,
+        binary_sensor_name: str,
+        mdi_icon: str,
+        device_class: BinarySensorDeviceClass,
+        status_value: str,
+        running_status_list: str,
     ):
         super().__init__(coordinator)
-        self.idx = idx
+        self.idx: int = idx
 
-        self._is_online_prop = is_online_prop
-        self._binary_sensor_name = binary_sensor_name
-        self._mdi_icon = mdi_icon
-        self._device_class = device_class
-        self._status_value = status_value
-        self._running_status_list = running_status_list
+        self._is_online_prop: str = is_online_prop
+        self._binary_sensor_name: str = binary_sensor_name
+        self._mdi_icon: str = mdi_icon
+        self._device_class: BinarySensorDeviceClass = device_class
+        self._status_value: str = status_value
+        self._running_status_list: str = running_status_list
 
     @property
     def available(self):

@@ -39,7 +39,9 @@ async def async_setup_entry(
     async_add_entities(hass_water_heaters)
 
 
-class ThermiaWaterHeater(CoordinatorEntity[ThermiaDataUpdateCoordinator], WaterHeaterEntity):
+class ThermiaWaterHeater(
+    CoordinatorEntity[ThermiaDataUpdateCoordinator], WaterHeaterEntity
+):
     """Representation of an Thermia water heater."""
 
     def __init__(self, coordinator: ThermiaDataUpdateCoordinator, idx: int):
@@ -135,7 +137,11 @@ class ThermiaWaterHeater(CoordinatorEntity[ThermiaDataUpdateCoordinator], WaterH
         """Return the list of supported features."""
         features = WaterHeaterEntityFeature.TARGET_TEMPERATURE
 
-        if self.current_operation is not None and self.coordinator.data.heat_pumps[self.idx].is_operation_mode_read_only is False:
+        if (
+            self.current_operation is not None
+            and self.coordinator.data.heat_pumps[self.idx].is_operation_mode_read_only
+            is False
+        ):
             features |= WaterHeaterEntityFeature.OPERATION_MODE
 
         return features

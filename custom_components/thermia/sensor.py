@@ -17,6 +17,7 @@ from .const import (
     MDI_TEMPERATURE_ICON,
     MDI_TIMER_COG_OUTLINE_ICON,
 )
+from .coordinator import ThermiaDataUpdateCoordinator
 
 
 async def async_setup_entry(
@@ -393,7 +394,4 @@ async def async_setup_entry(
         for idx, _ in enumerate(coordinator.data.heat_pumps)
     ]
 
-    async_add_entities([
-        *hass_thermia_active_alarms_sensors,
-        *hass_thermia_sensors
-    ])
+    async_add_entities([*hass_thermia_active_alarms_sensors, *hass_thermia_sensors])
