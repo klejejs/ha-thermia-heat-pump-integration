@@ -40,6 +40,12 @@ body:
       label: Debug File Data
       description: Please attach Thermia debug file data that can help diagnose the issue. To get the debug file data, see [README.md](https://github.com/klejejs/ha-thermia-heat-pump-integration?tab=readme-ov-file#adding-support-for-new-heat-pump-models).
 
+  - type: textarea
+    id: screenshots_from_ui
+    attributes:
+      label: Screenshots from Thermia Online web interface
+      description: If possible/applicable, please add screenshots from the Thermia Online web interface showing how the sensor/switch is displayed there.
+
   - type: checkboxes
     id: latest_version
     attributes:
