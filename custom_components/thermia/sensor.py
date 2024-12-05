@@ -8,6 +8,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
+from .coordinator import ThermiaDataUpdateCoordinator
 from .sensors.active_alarms_sensor import ThermiaActiveAlarmsSensor
 from .sensors.generic_sensor import ThermiaGenericSensor
 
@@ -25,7 +26,7 @@ async def async_setup_entry(
 ) -> None:
     """Set up the Thermia sensors."""
 
-    coordinator = hass.data[DOMAIN][config_entry.entry_id]
+    coordinator: ThermiaDataUpdateCoordinator = hass.data[DOMAIN][config_entry.entry_id]
 
     hass_thermia_sensors = []
 
@@ -267,6 +268,22 @@ async def async_setup_entry(
                     None,
                     "measurement",
                     "operational_status_integral",
+                    None,
+                )
+            )
+
+        if heat_pump.operational_status_pid is not None:
+            hass_thermia_sensors.append(
+                ThermiaGenericSensor(
+                    coordinator,
+                    idx,
+                    "is_online",
+                    "PID",
+                    "mdi:math-integral-box",
+                    EntityCategory.DIAGNOSTIC,
+                    None,
+                    "measurement",
+                    "operational_status_pid",
                     None,
                 )
             )
