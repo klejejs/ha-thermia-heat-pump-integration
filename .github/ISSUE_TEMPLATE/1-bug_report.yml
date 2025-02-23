@@ -29,7 +29,7 @@ body:
     validations:
       required: true
     attributes:
-      label: Debug File Data
+      label: Debug File Data from "thermia_debug.txt" file
       description: Please attach Thermia debug file data that can help diagnose the issue. To get the debug file data, see [README.md](https://github.com/klejejs/ha-thermia-heat-pump-integration?tab=readme-ov-file#adding-support-for-new-heat-pump-models).
 
   - type: textarea
