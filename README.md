@@ -43,4 +43,10 @@ Open HACS, go to the Integrations view and search for Thermia Heat Pump Integrat
 4. Extract the content of the zip file to the `custom_components` directory (folder) in your HA configuration directory (folder).
 5. Restart Home Assistant.
 
+## Common issues
+
+### Logging in throws an error
+
+Sometimes Thermia updates their privacy policy which causes the Thermia API to throw errors when logging in. To fix the issue, please visit [https://online.thermia.se](https://online.thermia.se), log in, accept the privacy agreement and then try using the API again to see if it has fixed the issue. If not, please create a new bug report.
+
 ## Contributions are welcome!
