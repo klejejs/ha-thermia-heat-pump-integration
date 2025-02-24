@@ -41,7 +41,7 @@ body:
   - type: checkboxes
     id: checkboxes
     attributes:
-      label: Please check the following before opening a new issue:
+      label: Please check the following before opening a new issue
       options:
         - label: I have checked and am running the latest version of the integration
           required: true
