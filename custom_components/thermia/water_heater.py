@@ -11,6 +11,7 @@ from homeassistant.components.water_heater import (
 from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
@@ -150,21 +151,35 @@ class ThermiaWaterHeater(
         """Set new target temperature."""
         target_temp = kwargs.get(ATTR_TEMPERATURE)
         if target_temp is not None:
-            await self.hass.async_add_executor_job(
-                lambda: self.coordinator.data.heat_pumps[self.idx].set_temperature(
-                    target_temp
+            try:
+                await self.hass.async_add_executor_job(
+                    lambda: self.coordinator.data.heat_pumps[self.idx].set_temperature(
+                        target_temp
+                    )
                 )
-            )
+                await self.coordinator.async_request_refresh()
+            except Exception as err:
+                _LOGGER.error("Failed to set Thermia temperature: %s", err)
+                raise HomeAssistantError(
+                    f"Failed to set Thermia temperature: {err}"
+                ) from err
         else:
             _LOGGER.error("A target temperature must be provided")
 
     async def async_set_operation_mode(self, operation_mode):
         """Set operation mode."""
         if operation_mode is not None:
-            await self.hass.async_add_executor_job(
-                lambda: self.coordinator.data.heat_pumps[self.idx].set_operation_mode(
-                    operation_mode
+            try:
+                await self.hass.async_add_executor_job(
+                    lambda: self.coordinator.data.heat_pumps[self.idx].set_operation_mode(
+                        operation_mode
+                    )
                 )
-            )
+                await self.coordinator.async_request_refresh()
+            except Exception as err:
+                _LOGGER.error("Failed to set Thermia operation mode: %s", err)
+                raise HomeAssistantError(
+                    f"Failed to set Thermia operation mode: {err}"
+                ) from err
         else:
             _LOGGER.error("An operation mode must be provided")
