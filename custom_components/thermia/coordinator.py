@@ -24,7 +24,7 @@ class ThermiaDataUpdateCoordinator(DataUpdateCoordinator[Thermia]):
             hass,
             _LOGGER,
             name=DOMAIN,
-            update_interval=timedelta(seconds=10),
+            update_interval=timedelta(seconds=60),
         )
 
     async def _async_update_data(self):
@@ -32,6 +32,8 @@ class ThermiaDataUpdateCoordinator(DataUpdateCoordinator[Thermia]):
         try:
             await self.hass.async_add_executor_job(lambda: self.thermia.update_data())
         except Exception as exception:
-            raise UpdateFailed(exception)
+            raise UpdateFailed(
+                f"Error communicating with Thermia API: {exception}"
+            ) from exception
 
         return self.thermia

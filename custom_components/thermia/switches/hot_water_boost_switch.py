@@ -2,11 +2,16 @@
 
 from __future__ import annotations
 
+import logging
+
 from homeassistant.components.switch import SwitchEntity
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from ..const import DOMAIN
 from ..coordinator import ThermiaDataUpdateCoordinator
+
+_LOGGER = logging.getLogger(__name__)
 
 
 class ThermiaHotWaterBoostSwitch(
@@ -63,19 +68,33 @@ class ThermiaHotWaterBoostSwitch(
 
     async def async_turn_on(self, **kwargs):
         """Turn on the switch."""
-        await self.hass.async_add_executor_job(
-            lambda: self.coordinator.data.heat_pumps[
-                self.idx
-            ].set_hot_water_boost_switch_state(1)
-        )
+        try:
+            await self.hass.async_add_executor_job(
+                lambda: self.coordinator.data.heat_pumps[
+                    self.idx
+                ].set_hot_water_boost_switch_state(1)
+            )
+            await self.coordinator.async_request_refresh()
+        except Exception as err:
+            _LOGGER.error("Failed to turn on Thermia hot water boost: %s", err)
+            raise HomeAssistantError(
+                f"Failed to turn on Thermia hot water boost: {err}"
+            ) from err
 
     async def async_turn_off(self, **kwargs):
         """Turn off the switch."""
-        await self.hass.async_add_executor_job(
-            lambda: self.coordinator.data.heat_pumps[
-                self.idx
-            ].set_hot_water_boost_switch_state(0)
-        )
+        try:
+            await self.hass.async_add_executor_job(
+                lambda: self.coordinator.data.heat_pumps[
+                    self.idx
+                ].set_hot_water_boost_switch_state(0)
+            )
+            await self.coordinator.async_request_refresh()
+        except Exception as err:
+            _LOGGER.error("Failed to turn off Thermia hot water boost: %s", err)
+            raise HomeAssistantError(
+                f"Failed to turn off Thermia hot water boost: {err}"
+            ) from err
 
     async def async_toggle(self, **kwargs):
         """Toggle the switch."""
