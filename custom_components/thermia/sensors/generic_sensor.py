@@ -42,7 +42,9 @@ class ThermiaGenericSensor(
     @property
     def available(self):
         """Return True if entity is available."""
-        return getattr(self.coordinator.data.heat_pumps[self.idx], self._is_online_prop)
+        return super().available and getattr(
+            self.coordinator.data.heat_pumps[self.idx], self._is_online_prop
+        )
 
     @property
     def name(self):

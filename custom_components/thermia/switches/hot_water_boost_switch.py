@@ -21,7 +21,9 @@ class ThermiaHotWaterBoostSwitch(
     @property
     def available(self):
         """Return True if entity is available."""
-        return self.coordinator.data.heat_pumps[self.idx].is_online
+        return (
+            super().available and self.coordinator.data.heat_pumps[self.idx].is_online
+        )
 
     @property
     def name(self):
