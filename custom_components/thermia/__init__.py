@@ -9,6 +9,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, ServiceCall
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.typing import ConfigType
+import requests
 from ThermiaOnlineAPI import Thermia
 
 from .const import CONF_PASSWORD, CONF_USERNAME, DEBUG_ACTION_NAME, DOMAIN
@@ -34,7 +35,10 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     username = config_entry.data[CONF_USERNAME]
     password = config_entry.data[CONF_PASSWORD]
 
-    thermia = await hass.async_add_executor_job(lambda: Thermia(username, password))
+    try:
+        thermia = await hass.async_add_executor_job(lambda: Thermia(username, password))
+    except requests.exceptions.RequestException as error:
+        raise ConfigEntryNotReady(error) from error
 
     coordinator = ThermiaDataUpdateCoordinator(hass, thermia)
 
